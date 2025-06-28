@@ -1,9 +1,11 @@
 import sqlite3
+import os
 from datetime import datetime
 
 DB_PATH = "data/database.db"  # можно изменить путь, если хочешь
 
 def init_db():
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)  # Создаёт папку, если её нет
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("""
