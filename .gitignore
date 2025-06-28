@@ -1,5 +1,15 @@
+# Виртуальное окружение
 venv/
+
+# Кеши и временные файлы
 __pycache__/
 *.pyc
-data/database.db
+*.pyo
+*.log
+
+# Конфиденциальные данные
 .env
+data/database.db
+
+# VS Code
+.vscode/
