@@ -3,6 +3,7 @@ from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, ReplyKey
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from db.database import get_user_stats_since, get_user_last_reset
+from keyboards.reply import main_menu_keyboard
 
 router = Router()
 
@@ -71,13 +72,13 @@ async def step_receiver(message: Message, state: FSMContext):
         f"🔄 Забирали в процессы: {data['processes']}\n\n"
         f"👤 Сдаёт: {data['sender']}\n"
         f"👤 Принимает: {data['receiver']}\n\n"
-        f"📊 Личная статистика с {last_reset.strftime('%d.%m.%Y %H:%M')}:\n"
+        f"📊 Личная статистика за смену:\n"
     )
 
     for key, label in labels.items():
         report += f"{label}: {stats.get(key, 0)}\n"
 
-    await message.answer("📝 Отчёт готов. Можешь переслать его в группу:\n\n" + report, reply_markup=ReplyKeyboardRemove())
+    await message.answer("📝 Отчёт готов. Можешь переслать его в группу:\n\n" + report, reply_markup=main_menu_keyboard)
     await message.answer(
         "⚠️ Не забудь сбросить свою статистику по команде /reset, чтобы начать новый отчётный период.\n"
     "Это сообщение не нужно пересылать в группу."

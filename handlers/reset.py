@@ -3,7 +3,8 @@ from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, ReplyKey
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
-from db.database import set_user_reset  # 👈 то же, что ты и вызывал
+from db.database import set_user_reset 
+from keyboards.reply import main_menu_keyboard
 
 router = Router()
 
@@ -31,9 +32,9 @@ async def resetstats_confirm_yes(message: Message, state: FSMContext):
     set_user_reset(message.from_user.id)
     await state.clear()
     await message.answer("✅ Статистика сброшена. Начинается новый отчётный период.",
-                         reply_markup=ReplyKeyboardRemove())
+                         reply_markup=main_menu_keyboard)
 
 @router.message(ResetState.confirmation, F.text == "❌ Нет")
 async def resetstats_confirm_no(message: Message, state: FSMContext):
     await state.clear()
-    await message.answer("❌ Сброс отменён.", reply_markup=ReplyKeyboardRemove())
+    await message.answer("❌ Сброс отменён.", reply_markup=main_menu_keyboard)

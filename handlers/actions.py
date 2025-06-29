@@ -32,7 +32,7 @@ async def handle_stats(message: Message):
         )
         return
 
-    msg_lines = [f"📊 Статистика с {last_reset.strftime('%Y-%m-%d %H:%M:%S')}:"]
+    msg_lines = [f"📊 Статистика за текущую смену:"]
     labels = {
         "repack": "📦 Спасенных",
         "defect": "❌ Брак",
