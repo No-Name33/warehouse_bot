@@ -1,4 +1,3 @@
-# handlers/main_menu.py
 from aiogram.types import Message
 from keyboards.reply import main_menu_keyboard
 

@@ -18,8 +18,8 @@ from handlers import reset, report
 
 async def main():
     init_db()
-    bot = Bot(token=BOT_TOKEN)   # создаём объект бота с токеном
-    dp = Dispatcher()            # диспетчер для регистрации обработчиков
+    bot = Bot(token=BOT_TOKEN)   
+    dp = Dispatcher()           
 
     dp.message.register(start_handler, Command(commands=["start"]))
     dp.message.register(handle_repack, F.text == "📦 Спас заказ")
@@ -31,7 +31,7 @@ async def main():
     dp.include_router(report.router)
 
 
-    await dp.start_polling(bot)  # запускаем бота
+    await dp.start_polling(bot)  
 
 if __name__ == "__main__":
     asyncio.run(main())
