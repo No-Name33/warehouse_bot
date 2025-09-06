@@ -14,7 +14,7 @@ class ReportState(StatesGroup):
     receiver = State()
 
 # Список сотрудников (потом можно заменить на данные из базы)
-staff = ["Сущенко", "Тоцкий", "Мелихова", "Аринушкина"]
+staff = ["Сущенко", "Дударчук", "Мелихова", "Чередниченко"]
 
 yes_no_kb = ReplyKeyboardMarkup(
     keyboard=[[KeyboardButton(text="Да"), KeyboardButton(text="Нет")]],
